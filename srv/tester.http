@@ -1,0 +1,113 @@
+###Get the service document
+http://localhost:4004/odata/v4/CatalogService/
+ 
+###Get service metadata document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+ 
+ 
+###Get All employees data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+ 
+###Get Single Employee Data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###test
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(sex,'M')
+
+###test
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$select=ID,nameFirst,nameLast,sex
+
+###insert Record
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Gowtham",
+      "nameMiddle": "",
+      "nameLast": "M",
+      "nameInitials": null,
+      "sex": "M",
+      "language": "T",
+      "phoneNumber": "+91 9842520487",
+      "email": "gowthamm3799@gmail.com",
+      "loginName": "gowti",
+      "Currency_code": "AED",
+      "salaryAmount": 100000,
+      "accountNumber": "887829",
+      "bankId": "8387432879432789",
+      "bankName": "Emirates NBD"
+    }
+
+
+
+###Get Single Employee Data
+
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Gowtham",
+      "nameMiddle": "",
+      "nameLast": "M",
+      "nameInitials": null,
+      "sex": "M",
+      "language": "T",
+      "phoneNumber": "+91 9842520487",
+      "email": "gowthamm3799@gmail.com",
+      "loginName": "gowti",
+      "Currency_code": "AED",
+      "salaryAmount": 100000,
+      "accountNumber": "887829",
+      "bankId": "8387432879432789",
+      "bankName": "Emirates NBD"
+    }
+
+
+###test
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=nameFirst eq 'Gowtham'
+
+###test
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/944c9ec0-b0c3-427e-9b21-379420424192
+
+###Patch
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/944c9ec0-b0c3-427e-9b21-379420424192
+Content-Type: application/json
+
+{
+
+    "salaryAmount": 10000,
+    "Currency_code": "EUR"
+
+}
+
+###test
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/944c9ec0-b0c3-427e-9b21-379420424192
+
+###Patch
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/944c9ec0-b0c3-427e-9b21-379420424192
+Content-Type: application/json
+
+{
+
+    "salaryAmount": 200000,
+    "Currency_code": "EUR"
+
+}
+
+###Get all Purchase Orders
+http://localhost:4004/odata/v4/CatalogService/POs
+ 
+###Get Single Purchase order
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC38052
+
+###Get Single Purchase order and items
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC38052?$expand=Items
+
+###Testing Action to boost order
+POST http://localhost:4004/odata/v4/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC38052')/CatalogService.boost
+Content-Type: application/json
+ 
+{}
+
+###Test function to get largest order
+http://localhost:4004/odata/v4/CatalogService/largestOrder()
